@@ -1,46 +1,41 @@
-# <b>uplink-nodejs binding</b>
+# node-storj
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/6acbf8b6d3dc42e98a30df0324334ca2)](https://app.codacy.com/gh/storj-thirdparty/uplink-nodejs?utm_source=github.com&utm_medium=referral&utm_content=storj-thirdparty/uplink-nodejs&utm_campaign=Badge_Grade_Dashboard)
+ES9+ compatible [Storj](https://storj.io) bindings, for use with [Tardigrade](https://tardigrade.io/).
 
-#### *Developed using v1.0.5 storj/uplink-c*
+## Usage
 
-[API documentation and tutorial](https://storj-thirdparty.github.io/uplink-nodejs/#/)
+### Example
 
-## <b>Initial Set-up (Important)</b>
+``` javascript
+const uplink = require('node-storj');
 
->NOTE: For Golang
+(async () => {
 
-Make sure your `PATH` includes the `$GOPATH/bin` directory, so that your commands can be easily used [Refer: Install the Go Tools](https://golang.org/doc/install):
-```
-export PATH=$PATH:$GOPATH/bin
-```
+	// parse access
+	const access = await uplink.parseAccess('your-access-here');
 
->NOTE:: For Nodejs 
+	// open project
+	const project = await access.openProject();
 
-* Please ensure Node.js with version 10 or higher is [installed](https://nodejs.org/en/download/)
+	// initiate file download
+	const download = await project.downloadObject("my-bucket", "file.txt");
 
-* Check its version
-```
-$ node -v
-```
-* Install node-gyp globally
-```
-$ npm install -g node-gyp
-```
-* Install the storj-nodejs Node.js package
-```
-$ npm install uplink-nodejs
+	// read chunks to program output
+	for await (const chunk of download) {
+		process.stdout.write(chunk);
+	}
+
+})();
+
 ```
 
->NOTE:  please ensure *make* is already installed.
+### Example with streams
 
->NOTE:  please ensure *node-gyp* dependencies is already installed.
+``` javascript
+// initiate file download
+const download = await project.downloadObject("my-bucket", "file.txt");
 
-
-
-## <b>Documentation</b>
-For more information on function definations and diagrams, check out the [Detail](//github.com/storj-thirdparty/uplink-nodejs/wiki/Home) or jump to:
-* [Uplink-nodejs Binding Functions](//github.com/storj-thirdparty/uplink-nodejs/wiki/#binding-functions)
-* [Flow Diagram](//github.com/storj-thirdparty/uplink-nodejs/wiki/#flow-diagram)
-* [libuplink Documentation](https://godoc.org/storj.io/uplink)
-* [Testing](//github.com/storj-thirdparty/uplink-nodejs/wiki/#testing)
+download
+	.stream()
+	.pipe(process.stdout);
+```
