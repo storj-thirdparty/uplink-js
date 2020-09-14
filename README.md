@@ -61,6 +61,30 @@ Returns a Promise which resolves to an `Upload` object.
 const upload = await project.uploadObject('my-bucket', 'my-path');
 ```
 
+#### `Async Iterable` <`StorjObject`> project.listObjects(bucket, options)
+
+Iterates through all objects in a bucket.
+
+##### options
+
+###### prefix
+
+Specifies from which prefix to list files.
+
+type: `string`<br>
+default: '/'
+
+###### recursive
+
+type: `bool`<br>
+default: false`
+
+``` javascript
+for await (const object of project.listObjects('my-bucket')) {
+	console.log(object.key);
+}
+```
+
 ###  `Download`
 
 Implements [asyncIterable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of) which yields [Buffers](https://nodejs.org/api/buffer.html) as the download is streamed.
