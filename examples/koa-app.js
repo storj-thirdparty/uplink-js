@@ -83,6 +83,3 @@ const uplink = require('../lib/uplink');
 	app.listen(3000);
 
 })().catch(err => { console.log(err); process.exit(0) });
-
-
-setTimeout(() => process.exit(0), 10 * 1000);
