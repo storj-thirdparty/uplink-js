@@ -71,10 +71,26 @@ const uplink = require('../lib/uplink');
 			ctx.body = renderListing({ path, listing });
 		} else {
 			// return object stream
-			const download = await project.downloadObject(bucket, path);
+			const range = ctx.get("Range");
+
+			let [start, end] = range.replace(/bytes=/, "").split("-");
+
+			start = start ? parseInt(start, 10) : 0;
+			end = end ? parseInt(end, 10) : stat.system.content_length;
+
+			const offset = start;
+			const length = Math.min(10 * 1000, end - start);
+
+			end = start + length;
+
+			console.log( { start, end, offset, length });
+
+			const download = await project.downloadObject(bucket, path, { offset, length });
 
 			ctx.set('Content-Type', mime.lookup(path));
-			ctx.set('Content-Length', stat.system.content_length);
+			ctx.set('Content-Range', `bytes ${start}-${end}/${stat.system.content_length}`)
+			ctx.set('Accept-Ranges', 'bytes');
+			ctx.set('Content-Length', length);
 
 			ctx.body = download.stream();
 		}
