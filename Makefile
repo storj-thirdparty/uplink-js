@@ -47,7 +47,7 @@ else
      fi;\
      if [ $(shell uname) = Linux ]; then\
 		curl $(GOURL_LINUX_AMD64) --output $(GOBUNDLE);\
-		tar xvfs $(GOBUNDLE);\
+		tar xfs $(GOBUNDLE);\
 		rm $(GOBUNDLE);\
 		chmod +x $(GOBIN);\
 		cd $(UPLINKC_NAME);\
