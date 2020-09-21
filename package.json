@@ -28,15 +28,12 @@
   "devDependencies": {
     "eslint": "^7.6.0",
     "express": "^4.17.1",
-    "mime-types": "^2.1.27"
+    "mime-types": "^2.1.27",
+    "koa": "^2.13.0",
   },
   "dependencies": {
     "bindings": "^1.5.0",
-    "chai": "^4.2.0",
-    "docsify": "^4.11.4",
     "jest": "^26.4.2",
-    "koa": "^2.13.0",
-    "mocha": "^8.0.1",
     "node-gyp": "^7.0.0"
   }
 }
