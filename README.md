@@ -1,5 +1,7 @@
 # node-storj
 
+[![Build Status](https://travis-ci.org/storj/node-storj3.svg?branch=master)](https://travis-ci.org/storj/node-storj3)
+
 ES9+ compatible [Storj](https://storj.io) bindings, for use with [Tardigrade](https://tardigrade.io/).
 
 ## Usage

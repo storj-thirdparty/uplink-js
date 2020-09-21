@@ -29,7 +29,7 @@
     "eslint": "^7.6.0",
     "express": "^4.17.1",
     "mime-types": "^2.1.27",
-    "koa": "^2.13.0",
+    "koa": "^2.13.0"
   },
   "dependencies": {
     "bindings": "^1.5.0",
