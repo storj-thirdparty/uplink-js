@@ -25,7 +25,7 @@ RED_COLOR=\033[31m
 GREEN_COLOR=\033[32m
 RESET_COLOR=\033[0m
 #
-build:
+build: clean
 ifdef OS
 	git clone -b ${UPLINKC_VERSION} ${GIT_REPO}
 	(cd ${UPLINKC_NAME}) && (${GOBUILD} -o ../${LIBRARY_NAME_WIN} -buildmode=c-shared) && (move ${LIBRARY_UPLINK} ../)
