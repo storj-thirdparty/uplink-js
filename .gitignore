@@ -118,3 +118,4 @@ dist
 build/
 libuplinkc.*
 uplink_definitions.h
+go/
