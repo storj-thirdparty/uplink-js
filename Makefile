@@ -36,20 +36,24 @@ else
       git clone -b $(UPLINKC_VERSION) $(GIT_REPO);\
      fi;\
      if [ $(shell uname) = Darwin ]; then\
-	 	curl $(GOURL_DARWIN_AMD64) --output $(GOBUNDLE);\
-		gunzip -c $(GOBUNDLE) | tar xopf -;\
-		rm $(GOBUNDLE);\
-		chmod +x $(GOBIN);\
+	 	if [ ! -f $(GOBIN) ]; then\
+		 	curl $(GOURL_DARWIN_AMD64) --output $(GOBUNDLE);\
+			gunzip -c $(GOBUNDLE) | tar xopf -;\
+			rm $(GOBUNDLE);\
+			chmod +x $(GOBIN);\
+		fi;\
 		cd $(UPLINKC_NAME);\
 		$(GOBIN) build -o ../$(LIBRARY_NAME_DARWIN) -buildmode=c-shared;\
 		mv $(LIBRARY_UPLINK) ../;\
 		cd ../;\
      fi;\
      if [ $(shell uname) = Linux ]; then\
-		curl $(GOURL_LINUX_AMD64) --output $(GOBUNDLE);\
-		tar xfs $(GOBUNDLE);\
-		rm $(GOBUNDLE);\
-		chmod +x $(GOBIN);\
+	 	if [ ! -f $(GOBIN) ]; then\
+			curl $(GOURL_LINUX_AMD64) --output $(GOBUNDLE);\
+			tar xfs $(GOBUNDLE);\
+			rm $(GOBUNDLE);\
+			chmod +x $(GOBIN);\
+		fi;\
 		cd $(UPLINKC_NAME);\
 		$(GOBUILD) -o ../$(LIBRARY_NAME_LINUX) -buildmode=c-shared;\
 		mv $(LIBRARY_UPLINK) ../;\
