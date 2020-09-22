@@ -55,7 +55,7 @@ else
 			chmod +x $(GOBIN);\
 		fi;\
 		cd $(UPLINKC_NAME);\
-		$(GOBUILD) -o ../$(LIBRARY_NAME_LINUX) -buildmode=c-shared;\
+		$(GOBIN) build -o ../$(LIBRARY_NAME_LINUX) -buildmode=c-shared;\
 		mv $(LIBRARY_UPLINK) ../;\
 		cd ../;\
      fi;\
