@@ -48,14 +48,7 @@ else
 		cd ../;\
      fi;\
      if [ $(shell uname) = Linux ]; then\
-	 	if [ ! -f $(GOCMD) ]; then\
-			curl $(GOURL_LINUX_AMD64) --output $(GOBUNDLE);\
-			tar xfs $(GOBUNDLE);\
-			rm $(GOBUNDLE);\
-			chmod +x $(GOCMD);\
-		fi;\
-		cd $(UPLINKC_NAME);\
-		PATH=$(GOPATH):$(PATH) $(GOCMD) build -o ../$(LIBRARY_NAME_LINUX) -buildmode=c-shared;\
+		$(GOCMD) build -o ../$(LIBRARY_NAME_LINUX) -buildmode=c-shared;\
 		mv $(LIBRARY_UPLINK) ../;\
 		cd ../;\
      fi;\
