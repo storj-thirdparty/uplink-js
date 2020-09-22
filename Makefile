@@ -1,5 +1,5 @@
 GOBUNDLE=$(PWD)/go.tar.gz
-GOBIN=$(PWD)/go/bin/go
+GOPATH=$(PWD)/go/bin
 
 GOURL_DARWIN_AMD64=https://dl.google.com/go/go1.15.2.darwin-amd64.tar.gz
 GOURL_LINUX_AMD64=https://dl.google.com/go/go1.15.2.linux-amd64.tar.gz
@@ -36,26 +36,26 @@ else
       git clone -b $(UPLINKC_VERSION) $(GIT_REPO);\
      fi;\
      if [ $(shell uname) = Darwin ]; then\
-	 	if [ ! -f $(GOBIN) ]; then\
+	 	if [ ! -f $(GOCMD) ]; then\
 		 	curl $(GOURL_DARWIN_AMD64) --output $(GOBUNDLE);\
 			gunzip -c $(GOBUNDLE) | tar xopf -;\
 			rm $(GOBUNDLE);\
-			chmod +x $(GOBIN);\
+			chmod +x $(GOCMD);\
 		fi;\
 		cd $(UPLINKC_NAME);\
-		$(GOBIN) build -o ../$(LIBRARY_NAME_DARWIN) -buildmode=c-shared;\
+		PATH=$(GOPATH):$(PATH) $(GOCMD) build -o ../$(LIBRARY_NAME_DARWIN) -buildmode=c-shared;\
 		mv $(LIBRARY_UPLINK) ../;\
 		cd ../;\
      fi;\
      if [ $(shell uname) = Linux ]; then\
-	 	if [ ! -f $(GOBIN) ]; then\
+	 	if [ ! -f $(GOCMD) ]; then\
 			curl $(GOURL_LINUX_AMD64) --output $(GOBUNDLE);\
 			tar xfs $(GOBUNDLE);\
 			rm $(GOBUNDLE);\
-			chmod +x $(GOBIN);\
+			chmod +x $(GOCMD);\
 		fi;\
 		cd $(UPLINKC_NAME);\
-		$(GOBIN) build -o ../$(LIBRARY_NAME_LINUX) -buildmode=c-shared;\
+		PATH=$(GOPATH):$(PATH) $(GOCMD) build -o ../$(LIBRARY_NAME_LINUX) -buildmode=c-shared;\
 		mv $(LIBRARY_UPLINK) ../;\
 		cd ../;\
      fi;\
