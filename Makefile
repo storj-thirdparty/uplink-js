@@ -53,8 +53,7 @@ else
 		mv $(LIBRARY_UPLINK) ../;\
 		cd ../;\
      fi;\
-  if test -d ./$(UPLINKC_NAME); then rm -rf ./$(UPLINKC_NAME); fi;\
-  echo ' $(GREEN_COLOR) \n Successfully build $(RESET_COLOR)';
+  echo ' $(GREEN_COLOR) \n Successfully build $(RESET_COLOR)';*/
 endif
 clean:
 ifdef OS
