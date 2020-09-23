@@ -6,3 +6,9 @@ go:
 node_js:
     - lts/*
     - node
+
+install:
+    - npm install
+    - make install
+    - npx node-gyp configure
+    - npx node-gyp rebuild
