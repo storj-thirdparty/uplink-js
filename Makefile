@@ -53,7 +53,7 @@ else
 		mv $(LIBRARY_UPLINK) ../;\
 		cd ../;\
      fi;\
-  echo ' $(GREEN_COLOR) \n Successfully build $(RESET_COLOR)';*/
+  echo ' $(GREEN_COLOR) \n Successfully build $(RESET_COLOR)';
 endif
 clean:
 ifdef OS
