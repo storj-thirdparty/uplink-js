@@ -24,8 +24,7 @@
 							{
 								"destination":"<(module_root_dir)/build/Release",
 								"files":[
-									"<(module_root_dir)/libuplinkc.h",
-									"<(module_root_dir)/uplink_definitions.h"
+									"<(module_root_dir)/libuplinkc.h"
 								]
 							}
 						],
