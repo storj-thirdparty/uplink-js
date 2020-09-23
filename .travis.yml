@@ -15,6 +15,5 @@ install:
     - export GOROOT=$PWD/go
     - go version
     - npm install
-    - make install
     - npx node-gyp configure
     - npx node-gyp rebuild
