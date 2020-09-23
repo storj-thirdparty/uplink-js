@@ -8,6 +8,7 @@ node_js:
     - node
 
 install:
+    - go version
     - npm install
     - make install
     - npx node-gyp configure
