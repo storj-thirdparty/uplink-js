@@ -11,9 +11,8 @@ install:
     - wget https://golang.org/dl/go1.15.2.linux-amd64.tar.gz
     - tar xvfs go1.15.2.linux-amd64.tar.gz
     - chmod +x go/bin/go
-    - export GOROOT=$HOME/go
-    - mkdir $GOROOT
     - export PATH=$PWD/go/bin:$PATH
+    - export GOROOT=$PWD/go
     - go version
     - npm install
     - make install
