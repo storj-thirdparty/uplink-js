@@ -4,7 +4,7 @@
   "description": "Storj-NodeJS bindings package",
   "main": "lib/uplink.js",
   "scripts": {
-    "test": "jest test/*.test.js",
+    "test": "jest test/*.test.js --collect-coverage",
     "preinstall": "make build",
     "install": "(node-gyp configure) && (node-gyp rebuild)"
   },
