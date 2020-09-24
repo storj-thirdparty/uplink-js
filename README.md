@@ -1,6 +1,7 @@
 # node-storj
 
 [![Build Status](https://travis-ci.org/storj-thirdparty/node-storj3.svg?branch=master)](https://travis-ci.org/storj-thirdparty/node-storj3)
+[![Coverage Status](https://coveralls.io/repos/github/storj-thirdparty/node-storj3/badge.svg?branch=master)](https://coveralls.io/github/storj-thirdparty/node-storj3?branch=master)
 
 ES9+ compatible [Storj](https://storj.io) bindings, for use with [Tardigrade](https://tardigrade.io/).
 
