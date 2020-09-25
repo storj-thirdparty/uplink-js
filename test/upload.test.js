@@ -54,7 +54,6 @@ test('uploads 10m file via async iterator', async () => {
 	assert.equal(uploadHashDigest, downloadHashDigest);
 });
 
-/*
 test('uploads 10m file via stream', async () => {
 	const bucketName = 'node-storj';
 	const fileName = '10m-upload-test';
@@ -101,4 +100,3 @@ test('uploads 10m file via stream', async () => {
 
 	assert.equal(uploadHashDigest, downloadHashDigest);
 });
-*/
