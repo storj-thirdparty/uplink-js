@@ -5,8 +5,7 @@
   "main": "lib/uplink.js",
   "scripts": {
     "test": "jest test/*.test.js --coverage",
-    "preinstall": "make build",
-    "install": "(node-gyp configure) && (node-gyp rebuild)"
+    "install": "make build && (node-gyp configure) && (node-gyp rebuild)"
   },
   "repository": {
     "type": "git",
