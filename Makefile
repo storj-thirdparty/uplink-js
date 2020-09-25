@@ -37,10 +37,10 @@ else
       git clone -b $(UPLINKC_VERSION) $(GIT_REPO);\
      fi;\
      if [ $(shell uname) = Darwin ]; then\
-		cd $(UPLINKC_NAME);\
-		$(GOCMD) build -o ../$(LIBRARY_NAME_DARWIN) -buildmode=c-shared;\
-		mv $(LIBRARY_UPLINK) ../;\
-		cd ../;\
+		 cd $(UPLINKC_NAME);\
+		 $(GOCMD) build -o ../$(LIBRARY_NAME_DARWIN) -buildmode=c-shared;\
+		 mv $(LIBRARY_UPLINK) ../;\
+		 cd ../;\
      fi;\
      if [ $(shell uname) = Linux ]; then\
 		cd $(UPLINKC_NAME);\
