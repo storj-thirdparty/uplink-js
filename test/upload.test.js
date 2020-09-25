@@ -8,7 +8,7 @@ const randomBytes = util.promisify(crypto.randomBytes);
 
 let project;
 
-jest.setTimeout(120 * 1000);
+jest.setTimeout(240 * 1000);
 
 beforeAll(async () => {
 	const access = await uplink.parseAccess(process.env.ACCESS);

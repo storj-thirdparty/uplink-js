@@ -4,7 +4,7 @@ const uplink = require('../lib/uplink');
 
 let project;
 
-jest.setTimeout(60000);
+jest.setTimeout(240 * 1000);
 
 beforeAll(async () => {
 	const access = await uplink.parseAccess(process.env.ACCESS);
