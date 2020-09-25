@@ -43,7 +43,7 @@ else
 			chmod +x $(GOCMD);\
 		fi;\
 		cd $(UPLINKC_NAME);\
-		PATH=$(GOPATH):$(PATH) $(GOCMD) build -o ../$(LIBRARY_NAME_DARWIN) -buildmode=c-shared;\
+		$(GOCMD) build -o ../$(LIBRARY_NAME_DARWIN) -buildmode=c-shared;\
 		mv $(LIBRARY_UPLINK) ../;\
 		cd ../;\
      fi;\

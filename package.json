@@ -1,7 +1,7 @@
 {
-  "name": "uplink-nodejs",
-  "version": "1.0.7",
-  "description": "Storj-NodeJS bindings package",
+  "name": "uplink-js",
+  "version": "0.0.1",
+  "description": "ES9+ compatible Storj bindings for Node, for use with Tardigrade.",
   "main": "lib/uplink.js",
   "scripts": {
     "test": "jest test/*.test.js --coverage",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/storj-thirdparty/uplink-nodejs.git"
+    "url": "git+https://github.com/storj-thirdparty/uplink-js.git"
   },
   "keywords": [
     "bindings",
@@ -19,12 +19,12 @@
     "tardigrade",
     "uplink"
   ],
-  "author": "Utropicmedia",
+  "author": "Monty Anderson<work@montyanderson.net>",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/storj-thirdparty/uplink-nodejs/issues"
+    "url": "https://github.com/storj-thirdparty/uplink-js/issues"
   },
-  "homepage": "https://github.com/storj-thirdparty/uplink-nodejs#readme",
+  "homepage": "https://github.com/storj-thirdparty/uplink-js#readme",
   "devDependencies": {
     "coveralls": "^3.1.0",
     "eslint": "^7.6.0",
