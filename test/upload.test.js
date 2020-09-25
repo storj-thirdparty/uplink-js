@@ -85,7 +85,7 @@ test('uploads 10m file via stream', async () => {
 
 	uploadStream.pipe(writeStream);
 
-	await new Promise(resolve => writeStream.once('finish', resolve));
+	await upload.finish;
 
 	const uploadHashDigest = uploadHash.digest('hex');
 
