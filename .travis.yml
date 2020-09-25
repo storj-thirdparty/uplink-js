@@ -17,3 +17,7 @@ install:
     - npm install
     - npx node-gyp configure
     - npx node-gyp rebuild
+
+script:
+    - npm test
+    - cat ./tests/coverage/lcov.info | npx coveralls

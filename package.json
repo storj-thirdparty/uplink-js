@@ -4,7 +4,7 @@
   "description": "Storj-NodeJS bindings package",
   "main": "lib/uplink.js",
   "scripts": {
-    "test": "jest test/*.test.js --collect-coverage",
+    "test": "jest test/*.test.js --coverage",
     "preinstall": "make build",
     "install": "(node-gyp configure) && (node-gyp rebuild)"
   },
@@ -26,10 +26,11 @@
   },
   "homepage": "https://github.com/storj-thirdparty/uplink-nodejs#readme",
   "devDependencies": {
+    "coveralls": "^3.1.0",
     "eslint": "^7.6.0",
     "express": "^4.17.1",
-    "mime-types": "^2.1.27",
-    "koa": "^2.13.0"
+    "koa": "^2.13.0",
+    "mime-types": "^2.1.27"
   },
   "dependencies": {
     "bindings": "^1.5.0",
