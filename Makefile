@@ -43,7 +43,7 @@ else
      fi;\
      if [ $(shell uname) = Linux ]; then\
 	 	if [ $(shell uname -m ) = x86_64 ]; then\
-			wget $(GOURL_LINUX_AMD64) -o $(GOBUNDLE);\
+			curl $(GOURL_LINUX_AMD64) -o $(GOBUNDLE);\
 			tar xvfs $(GOBUNDLE);\
 			export GOCMD=$(PWD)/go/bin/go;\
 			chmod +x ${GOCMD};\
