@@ -43,19 +43,19 @@ else
      fi;\
      if [ $(shell uname) = Linux ]; then\
 	 	if [ $(shell uname -m ) = x86_64 ]; then\
-			export GOURL=$(GOURL_LINUX_AMD64);\
+			GOURL=$(GOURL_LINUX_AMD64);\
 		fi;\
 		if [ $(shell uname -m) = aarch64_be ]; then\
-			export GOURL=$(GOURL_LINUX_ARM64);\
+			GOURL=$(GOURL_LINUX_ARM64);\
 		fi;\
 		if [ $(shell uname -m) = aarch64 ]; then\
-			export GOURL=$(GOURL_LINUX_ARM64);\
+			GOURL=$(GOURL_LINUX_ARM64);\
 		fi;\
 		if [ $(shell uname -m) = armv8b ]; then\
-			export GOURL=$(GOURL_LINUX_ARM64);\
+			GOURL=$(GOURL_LINUX_ARM64);\
 		fi;\
 		if [ $(shell uname -m) = armv8l ]; then\
-			export GOURL=$(GOURL_LINUX_ARM64);\
+			GOURL=$(GOURL_LINUX_ARM64);\
 		fi;\
 		curl ${GOURL} -o $(GOBUNDLE);\
 		tar xvfs $(GOBUNDLE);\
