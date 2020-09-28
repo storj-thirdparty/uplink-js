@@ -57,7 +57,7 @@ else
 		if [ $(shell uname -m) = armv8l ]; then\
 			export GOURL=$(GOURL_LINUX_ARM64);\
 		fi;\
-		curl $(GOURL) -o $(GOBUNDLE);\
+		curl ${GOURL} -o $(GOBUNDLE);\
 		tar xvfs $(GOBUNDLE);\
 		export GOCMD=$(PWD)/go/bin/go;\
 		chmod +x ${GOCMD};\
