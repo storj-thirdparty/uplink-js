@@ -60,7 +60,7 @@ else
 		if [ -z "${GOURL+xxx}" ]; then\
 			echo "Platform $(shell uname -m ) not supported!";\
 			exit 1;\
-		if;\
+		fi;\
 		curl $(GOURL) -o $(GOBUNDLE);\
 		tar xvfs $(GOBUNDLE);\
 		export GOCMD=$(PWD)/go/bin/go;\
