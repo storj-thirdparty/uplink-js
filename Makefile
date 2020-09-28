@@ -52,7 +52,6 @@ else
 			mkdir -p $GOROOT;\
 			go version;\
 		fi;\
-
 		cd $(UPLINKC_NAME);\
 		$(GOCMD) build -o ../$(LIBRARY_NAME_LINUX) -buildmode=c-shared;\
 		mv $(LIBRARY_UPLINK) ../;\
