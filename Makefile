@@ -44,16 +44,16 @@ else
      if [ $(shell uname) = Linux ]; then\
 	 	if [ $(shell uname -m ) = x86_64 ]; then\
 			wget $(GOURL_LINUX_AMD64) -o $(GOBUNDLE);\
-			tar xfs $(GOBUNDLE);\
-			GOCMD=$(PWD)/go/bin/go;\
-			chmod +x $(GOCMD);\
-			PATH=$(PWD)/go/bin:$PATH;\
-			GOROOT=$(PWD)/go;\
-			mkdir -p $(GOROOT);\
+			tar xvfs $(GOBUNDLE);\
+			export GOCMD=$(PWD)/go/bin/go;\
+			chmod +x ${GOCMD};\
+			export PATH=$(PWD)/go/bin:$(PATH);\
+			export GOROOT=$(PWD)/go;\
+			mkdir -p ${GOROOT};\
 			go version;\
 		fi;\
 		cd $(UPLINKC_NAME);\
-		$(GOCMD) build -o ../$(LIBRARY_NAME_LINUX) -buildmode=c-shared;\
+		${GOCMD} build -o ../$(LIBRARY_NAME_LINUX) -buildmode=c-shared;\
 		mv $(LIBRARY_UPLINK) ../;\
 		cd ../;\
      fi;\
