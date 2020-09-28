@@ -43,15 +43,32 @@ else
      fi;\
      if [ $(shell uname) = Linux ]; then\
 	 	if [ $(shell uname -m ) = x86_64 ]; then\
-			curl $(GOURL_LINUX_AMD64) -o $(GOBUNDLE);\
-			tar xvfs $(GOBUNDLE);\
-			export GOCMD=$(PWD)/go/bin/go;\
-			chmod +x ${GOCMD};\
-			export PATH=$(PWD)/go/bin:$(PATH);\
-			export GOROOT=$(PWD)/go;\
-			mkdir -p ${GOROOT};\
-			go version;\
+			export GOURL=$(GOURL_LINUX_AMD64);\
 		fi;\
+		if [ $(shell uname -m) = aarch64_be ]; then\
+			export GOURL=$(GOURL_LINUX_ARM64);\
+		fi;\
+		if [ $(shell uname -m) = aarch64 ]; then\
+			export GOURL=$(GOURL_LINUX_ARM64);\
+		fi;\
+		if [ $(shell uname -m) = armv8b ]; then\
+			export GOURL=$(GOURL_LINUX_ARM64);\
+		fi;\
+		if [ $(shell uname -m) = armv8l ]; then\
+			export GOURL=$(GOURL_LINUX_ARM64);\
+		fi;\
+		if [ -z "${GOURL+xxx}" ]; then\
+			echo "Platform $(shell uname -m ) not supported!";\
+			exit 1;\
+		if;\
+		curl $(GOURL) -o $(GOBUNDLE);\
+		tar xvfs $(GOBUNDLE);\
+		export GOCMD=$(PWD)/go/bin/go;\
+		chmod +x ${GOCMD};\
+		export PATH=$(PWD)/go/bin:$(PATH);\
+		export GOROOT=$(PWD)/go;\
+		mkdir -p ${GOROOT};\
+		echo go version;\
 		cd $(UPLINKC_NAME);\
 		${GOCMD} build -o ../$(LIBRARY_NAME_LINUX) -buildmode=c-shared;\
 		mv $(LIBRARY_UPLINK) ../;\
