@@ -8,12 +8,6 @@ node_js:
     - node
 
 install:
-    - wget https://golang.org/dl/go1.15.2.linux-amd64.tar.gz
-    - tar xfs go1.15.2.linux-amd64.tar.gz
-    - chmod +x go/bin/go
-    - export PATH=$PWD/go/bin:$PATH
-    - export GOROOT=$PWD/go
-    - mkdir -p $GOROOT
     - go version
     - npm install
     - npx node-gyp configure
