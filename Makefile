@@ -1,8 +1,8 @@
 GOBUNDLE=$(PWD)/go.tar.gz
 GOURL_DARWIN_AMD64=https://dl.google.com/go/go1.15.2.darwin-amd64.tar.gz
 
-GOURL_LINUX_AMD64=https://dl.google.com/go/go1.15.2.linux-amd64.tar.gz
-GOURL_LINUX_ARM64=https://dl.google.com/go/go1.15.2.linux-arm64.tar.gz
+URL_LINUX_AMD64=https://dl.google.com/go/go1.15.2.linux-amd64.tar.gz
+URL_LINUX_ARM64=https://dl.google.com/go/go1.15.2.linux-arm64.tar.gz
 
 # Go parameters
 GOCMD=go
@@ -43,7 +43,7 @@ else
      fi;\
      if [ $(shell uname) = Linux ]; then\
 	 	if [ $(shell uname -m ) = x86_64 ]; then\
-			wget $GOURL_LINUX_AMD64 -o $GOBUNDLE;\
+			wget $URL_LINUX_AMD64 -o $GOBUNDLE;\
 			tar xfs $GOBUNDLE;\
 			GOCMD=$PWD/go/bin/go;\
 			chmod +x $GOCMD;\
