@@ -1,6 +1,4 @@
 GOBUNDLE=$(PWD)/go.tar.gz
-GOPATH=$(PWD)/go/bin
-GOPATH=$(PWD)/go/bin/go
 
 GOURL_DARWIN_AMD64=https://dl.google.com/go/go1.15.2.darwin-amd64.tar.gz
 GOURL_LINUX_AMD64=https://dl.google.com/go/go1.15.2.linux-amd64.tar.gz

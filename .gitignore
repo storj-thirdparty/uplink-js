@@ -119,3 +119,4 @@ build/
 libuplinkc.*
 uplink_definitions.h
 go/
+uplink-c

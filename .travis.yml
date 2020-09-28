@@ -13,6 +13,7 @@ install:
     - chmod +x go/bin/go
     - export PATH=$PWD/go/bin:$PATH
     - export GOROOT=$PWD/go
+    - mkdir -p $GOROOT
     - go version
     - npm install
     - npx node-gyp configure
