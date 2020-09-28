@@ -57,7 +57,7 @@ else
 		if [ $(shell uname -m) = armv8l ]; then\
 			export GOURL=$(GOURL_LINUX_ARM64);\
 		fi;\
-		if [ -z "${GOURL+xxx}" ]; then\
+		if [ -z "${GOURL}" ]; then\
 			echo "Platform $(shell uname -m ) not supported!";\
 			exit 1;\
 		fi;\
