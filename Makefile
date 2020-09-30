@@ -1,4 +1,5 @@
 GOBUNDLE=$(PWD)/go.tar.gz
+GOBIN=$(PWD)/go/bin/go
 GOURL_DARWIN_AMD64=https://dl.google.com/go/go1.15.2.darwin-amd64.tar.gz
 
 GOURL_LINUX_AMD64=https://dl.google.com/go/go1.15.2.linux-amd64.tar.gz
@@ -43,30 +44,29 @@ else
      fi;\
      if [ $(shell uname) = Linux ]; then\
 	 	if [ $(shell uname -m ) = x86_64 ]; then\
-			GOURL=$(GOURL_LINUX_AMD64);\
+			gourl := $(GOURL_LINUX_AMD64);\
 		fi;\
 		if [ $(shell uname -m) = aarch64_be ]; then\
-			GOURL=$(GOURL_LINUX_ARM64);\
+			gourl := $(GOURL_LINUX_ARM64);\
 		fi;\
 		if [ $(shell uname -m) = aarch64 ]; then\
-			GOURL=$(GOURL_LINUX_ARM64);\
+			gourl := $(GOURL_LINUX_ARM64);\
 		fi;\
 		if [ $(shell uname -m) = armv8b ]; then\
-			GOURL=$(GOURL_LINUX_ARM64);\
+			gourl := $(GOURL_LINUX_ARM64);\
 		fi;\
 		if [ $(shell uname -m) = armv8l ]; then\
-			GOURL=$(GOURL_LINUX_ARM64);\
+			gourl := $(GOURL_LINUX_ARM64);\
 		fi;\
-		curl ${GOURL} -o $(GOBUNDLE);\
+		curl ${gourl} -o $(GOBUNDLE);\
 		tar xvfs $(GOBUNDLE);\
-		export GOCMD=$(PWD)/go/bin/go;\
-		chmod +x ${GOCMD};\
+		chmod +x ${GOBIN};\
 		export PATH=$(PWD)/go/bin:$(PATH);\
 		export GOROOT=$(PWD)/go;\
 		mkdir -p ${GOROOT};\
 		echo go version;\
 		cd $(UPLINKC_NAME);\
-		${GOCMD} build -o ../$(LIBRARY_NAME_LINUX) -buildmode=c-shared;\
+		${GOBIN} build -o ../$(LIBRARY_NAME_LINUX) -buildmode=c-shared;\
 		mv $(LIBRARY_UPLINK) ../;\
 		cd ../;\
      fi;\
