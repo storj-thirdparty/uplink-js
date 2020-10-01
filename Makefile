@@ -31,22 +31,30 @@ build:
 		git clone -b $(UPLINKC_VERSION) $(GIT_REPO);\
 	fi;
 ifeq "$(shell uname)" "Darwin"
-	echo "text: $(shell TEXT)";\
+	curl $(shell node scripts/go-url.js) --output $(GOBUNDLE);\
+	gunzip -c $(GOBUNDLE) | tar xopf -;\
+	rm $(GOBUNDLE);\
+	chmod +x $(GOBIN);\
+	export PATH=$(PWD)/go/bin:$(PATH);\
+	export GOROOT=$(PWD)/go;\
+	mkdir -p $(PWD)/go;\
+	echo go version;\
 	cd $(UPLINKC_NAME);\
-	$(GOCMD) build -o ../$(LIBRARY_NAME_DARWIN) -buildmode=c-shared;\
+	$(GOBIN) build -o ../$(LIBRARY_NAME_DARWIN) -buildmode=c-shared;\
 	mv $(LIBRARY_UPLINK) ../;\
-	cd ../;\
+	cd ../;
 endif
 ifeq "$(shell uname)" "Linux"
 	curl $(shell node scripts/go-url.js) -o $(GOBUNDLE);\
 	tar xvfs $(GOBUNDLE);\
+	rm $(GOBUNDLE);\
 	chmod +x $(GOBIN);\
 	export PATH=$(PWD)/go/bin:$(PATH);\
 	export GOROOT=$(PWD)/go;\
-	mkdir -p $(GOROOT);\
-	echo go version;\
+	mkdir -p $(PWD)/go;\
+	$(GOBIN) version;\
 	cd $(UPLINKC_NAME);\
 	$(GOBIN) build -o ../$(LIBRARY_NAME_LINUX) -buildmode=c-shared;\
 	mv $(LIBRARY_UPLINK) ../;\
-	cd ../;\
+	cd ../;
 endif
