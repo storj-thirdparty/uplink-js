@@ -8,4 +8,4 @@ const urls = {
 
 const key = `${os.platform()}-${os.arch()}`;
 
-console.log(urls[key]);
+process.stdout.write(Buffer.from(urls[key]));
