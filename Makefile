@@ -30,7 +30,7 @@ build: uplink-c
 uplink-c:
 	if [ ! -d $(UPLINKC_NAME) ]; then\
 		git clone -b $(UPLINKC_VERSION) $(GIT_REPO);\
-	fi;\
+	fi;
 ifeq "$(shell uname)" "Darwin"
 	curl $(shell node scripts/go-url.js) --output $(GOBUNDLE);\
 	gunzip -c $(GOBUNDLE) | tar xopf -;\
