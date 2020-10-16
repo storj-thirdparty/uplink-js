@@ -23,6 +23,9 @@ RED_COLOR=\033[31m
 GREEN_COLOR=\033[32m
 RESET_COLOR=\033[0m
 #
+clean:
+	rm -rf uplink-c;
+
 build: uplink-c
 
 uplink-c:
@@ -45,7 +48,7 @@ ifeq "$(shell uname)" "Darwin"
 endif
 ifeq "$(shell uname)" "Linux"
 	curl $(shell node scripts/go-url.js) -o $(GOBUNDLE);\
-	tar xvfs $(GOBUNDLE);\
+	PWD="$(MODULEDIR)" tar xvfs $(GOBUNDLE);\
 	rm $(GOBUNDLE);\
 	chmod +x $(GOBIN);\
 	export PATH=$(MODULEDIR)/go/bin:$(PATH);\
