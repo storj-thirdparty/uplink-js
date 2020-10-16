@@ -8,4 +8,8 @@ const urls = {
 
 const key = `${os.platform()}-${os.arch()}`;
 
+if(!(key in urls)) {
+	throw new Error("Platform not supported");
+}
+
 process.stdout.write(Buffer.from(urls[key]));

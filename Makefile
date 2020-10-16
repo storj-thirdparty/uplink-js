@@ -1,9 +1,6 @@
-GOBUNDLE=$(PWD)/go.tar.gz
-GOBIN=$(PWD)/go/bin/go
-GOURL_DARWIN_AMD64=https://dl.google.com/go/go1.15.2.darwin-amd64.tar.gz
-
-GOURL_LINUX_AMD64=
-GOURL_LINUX_ARM64=https://dl.google.com/go/go1.15.2.linux-arm64.tar.gz
+MODULEDIR=$(shell node scripts/module-dir.js)
+GOBUNDLE=$(MODULEDIR)/go.tar.gz
+GOBIN=$(MODULEDIR)/go/bin/go
 
 # Go parameters
 GOCMD=go
@@ -26,7 +23,9 @@ RED_COLOR=\033[31m
 GREEN_COLOR=\033[32m
 RESET_COLOR=\033[0m
 #
-build:
+build: uplink-c
+
+uplink-c:
 	if [ ! -d $(UPLINKC_NAME) ]; then\
 		git clone -b $(UPLINKC_VERSION) $(GIT_REPO);\
 	fi;
@@ -35,12 +34,12 @@ ifeq "$(shell uname)" "Darwin"
 	gunzip -c $(GOBUNDLE) | tar xopf -;\
 	rm $(GOBUNDLE);\
 	chmod +x $(GOBIN);\
-	export PATH=$(PWD)/go/bin:$(PATH);\
-	export GOROOT=$(PWD)/go;\
-	mkdir -p $(PWD)/go;\
+	export PATH=$(MODULEDIR)/go/bin:$(PATH);\
+	export GOROOT=$(MODULEDIR)/go;\
+	mkdir -p $(MODULEDIR)/go;\
 	echo go version;\
 	cd $(UPLINKC_NAME);\
-	$(GOBIN) build -o ../$(LIBRARY_NAME_DARWIN) -buildmode=c-shared;\
+	$(GOCMD) build -o ../$(LIBRARY_NAME_DARWIN) -buildmode=c-shared;\
 	mv $(LIBRARY_UPLINK) ../;\
 	cd ../;
 endif
@@ -49,9 +48,9 @@ ifeq "$(shell uname)" "Linux"
 	tar xvfs $(GOBUNDLE);\
 	rm $(GOBUNDLE);\
 	chmod +x $(GOBIN);\
-	export PATH=$(PWD)/go/bin:$(PATH);\
-	export GOROOT=$(PWD)/go;\
-	mkdir -p $(PWD)/go;\
+	export PATH=$(MODULEDIR)/go/bin:$(PATH);\
+	export GOROOT=$(MODULEDIR)/go;\
+	mkdir -p $(MODULEDIR)/go;\
 	$(GOBIN) version;\
 	cd $(UPLINKC_NAME);\
 	$(GOBIN) build -o ../$(LIBRARY_NAME_LINUX) -buildmode=c-shared;\
