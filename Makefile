@@ -1,7 +1,6 @@
 MODULEDIR=$(shell node scripts/module-dir.js)
 GOBUNDLE=$(MODULEDIR)/go.tar.gz
 GOBIN=$(MODULEDIR)/go/bin/go
-
 # Go parameters
 GOCMD=go
 GOBUILD=$(GOCMD) build
@@ -31,7 +30,7 @@ build: uplink-c
 uplink-c:
 	if [ ! -d $(UPLINKC_NAME) ]; then\
 		git clone -b $(UPLINKC_VERSION) $(GIT_REPO);\
-	fi;
+	fi;\
 ifeq "$(shell uname)" "Darwin"
 	curl $(shell node scripts/go-url.js) --output $(GOBUNDLE);\
 	gunzip -c $(GOBUNDLE) | tar xopf -;\
@@ -39,6 +38,8 @@ ifeq "$(shell uname)" "Darwin"
 	chmod +x $(GOBIN);\
 	export PATH=$(MODULEDIR)/go/bin:$(PATH);\
 	export GOROOT=$(MODULEDIR)/go;\
+	export GOPATH=$(MODULEDIR)/gopath;\
+	mkdir -p $(MODULEDIR)/gopath;
 	mkdir -p $(MODULEDIR)/go;\
 	echo go version;\
 	cd $(UPLINKC_NAME);\

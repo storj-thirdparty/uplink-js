@@ -119,5 +119,6 @@ build/
 libuplinkc.*
 uplink_definitions.h
 go/
+gopath/
 uplink-c
 go.tar.gz
