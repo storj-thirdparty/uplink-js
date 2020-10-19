@@ -4,7 +4,6 @@ go:
     - "1.15.2"
 
 node_js:
-    - lts/*
     - node
 
 install:
