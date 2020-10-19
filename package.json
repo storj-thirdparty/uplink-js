@@ -1,6 +1,6 @@
 {
   "name": "uplink-js",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "ES9+ compatible Storj bindings for Node, for use with Tardigrade.",
   "main": "lib/uplink.js",
   "scripts": {

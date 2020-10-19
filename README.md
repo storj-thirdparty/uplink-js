@@ -68,6 +68,10 @@ const upload = await project.uploadObject('my-bucket', 'my-path');
 
 Iterates through all objects in a bucket.
 
+#### `Promise` project.deleteObject(bucket, path)
+
+Delete an object.
+
 ##### options
 
 ###### prefix
