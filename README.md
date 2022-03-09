@@ -5,6 +5,8 @@
 
 ES9+ compatible [Storj](https://storj.io) bindings for [Node](https://nodejs.org/en/), for use with [Tardigrade](https://tardigrade.io/).
 
+> *This repository is not being actively developed. Consider using [Gateway MT](https://docs.storj.io/dcs/getting-started/gateway-mt/#generate-credentials-to-the-gateway-mt) with the new [AWS S3 SDK](https://github.com/aws/aws-sdk-js-v3).*
+
 ## Usage
 
 ### Example
